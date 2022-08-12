@@ -1,3 +1,7 @@
+@import "./login.scss";
+@import "./game.scss";
+@import "./leaderboard.scss";
+
 *,
 *::after,
 *::before {
@@ -6,9 +10,32 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+
 .container {
   width: 900px;
   margin: 0 auto;
 
-  border: 1px solid #ccc;
+  // border: 1px solid #ccc;
+}
+
+.btn {
+  width: 230px;
+  height: 46px;
+  background-color: rgb(54, 98, 228);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  margin-top: 20px;
 }

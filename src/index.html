@@ -7,39 +7,57 @@
     <title>Math Quiz</title>
   </head>
   <body>
-    <header>
+    <div class="login">
       <div class="container">
-        <h1>Math Quiz</h1>
+        <header>
+          <h2 class="login-logo">Math Quiz</h2>
+          <ul class="login-menu">
+            <li class="login-menu__item"><a href="#">Rules</a></li>
+            <li class="login-menu__item"><a href="./leaderboard.html">Leaderboard</a></li>
+          </ul>
+        </header>
+        <main>
+          <section class="main">
+            <div>
+              <h3 class="main-heading">Hello Gamer! Tell us your name?</h3>
+              <input
+                class="main-input username"
+                type="text"
+                placeholder="Введите имя"
+              />
+              <p class="warning-text">to start the game, enter a name*</p>
+            </div>
+            <div>
+              <h3 class="main-heading">Choose your game mode:</h3>
+              <div class="main-radio__wrapper">
+                <div>
+                  <input
+                    class="main-radio moderadio"
+                    value="practice"
+                    name="mode"
+                    id="practice"
+                    type="radio"
+                    checked
+                  />
+                  <label for="practice"> Practice </label>
+                </div>
+                <div>
+                  <input
+                    class="main-radio"
+                    value="time"
+                    name="mode"
+                    id="time"
+                    type="radio"
+                  />
+                  <label for="time"> Time Attack </label>
+                </div>
+              </div>
 
-        <h3>Hello Gamer! Tell us your name?</h3>
-        <input class="username" type="text" placeholder="Введите имя" />
-        <p class="demo"></p>
-        <h2>Choose your game mode:</h2>
-        <div>
-
-            <input
-            class="moderadio"
-            value="practice"
-            name="mode"
-            id="practice"
-            type="radio"
-            checked
-            />
-            <label for="practice"> Practice </label>
-            
-            <input  value="time" name="mode" id="time" type="radio" />
-            <label for="time"> Time Attack </label>
-            
-        </div>
-
-        <button>Let's go</button>
-
-        <div>don't know rules?<a href="#">clicke here!</a></div>
-
-        <div>
-          <a href="#">LEADERBOARD</a>
-        </div>
+              <button class="btn go">Let's go</button>
+            </div>
+          </section>
+        </main>
       </div>
-    </header>
+    </div>
   </body>
 </html>

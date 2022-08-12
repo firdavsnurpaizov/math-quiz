@@ -32,6 +32,12 @@ module.exports = {
         collapseWhitespace: isProd,
       }
     }),
+    new HTMLWebpackPlugin({
+      template: "./src/game.html", filename: 'game.html',
+    }),
+    new HTMLWebpackPlugin({
+      template: "./src/leaderboard.html", filename: 'leaderboard.html',
+    }),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [

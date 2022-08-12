@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math Quiz</title>
+  </head>
+  <body>
+    <main>
+      <section class="game">
+        <div class="container">
+          <header>
+            <h2 class="game-logo">
+              <span> Have fun, <span class="gamername"></span> :) </span>
+            </h2>
+            <div class="item btn" id="m"></div>
+          </header>
+
+          <div class="game-calculation">
+            <div class="game-item item-1"></div>
+            <div class="game-item operator"></div>
+            <div class="game-item item-2"></div>
+            <div class="game-item equals">=</div>
+            <input class="game-item result" type="number" />
+          </div>
+
+          <div class="score-wrapper">
+            <h3>Your score:</h3>
+            <div class="score">0</div>
+            <button class="btn stop">Stop game</button>
+        </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal-menu">
+      <div class="modal-menu-body">
+        <div class="modal-menu-content">
+          <h3>Game stopped</h3>
+          <button class="btn continue">Continue</button>
+          <button class="btn end">End game</button>
+          <button class="btn back">Back</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-end end-game">
+      <div class="modal-end-body">
+        <div class="modal-end-content">
+          <h3>Time is up</h3>
+          <h4>Score: <span class="final-score"></span></h4>
+          <h4>Correct: <span class="final-correct"></span></h4>
+          <h4>Incorrect: <span class="final-incorrect"></span></h4>
+
+          <button class="btn again">Play again</button>
+          <button class="btn leaderboard-btn">Leaderboard</button>
+          <button class="btn back-end">Back</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
