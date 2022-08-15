@@ -38,6 +38,9 @@ module.exports = {
     new HTMLWebpackPlugin({
       template: "./src/leaderboard.html", filename: 'leaderboard.html',
     }),
+    new HTMLWebpackPlugin({
+      template: "./src/rules.html", filename: 'rules.html',
+    }),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [

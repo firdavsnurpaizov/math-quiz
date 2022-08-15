@@ -8,19 +8,12 @@ if (document.querySelector('.login')) {
     let currentUser = JSON.parse(localStorage.getItem('username')) || []
     let currentName
     let currentMode
-    // console.log(currentUser, 'currentUser');
-    // let currentMode = JSON.parse(localStorage.getItem('username'))
-
-    // username.value = currentUser
 
     if (currentUser) {
         currentName = currentUser?.name || ''
         currentMode = currentUser?.mode || ''
-
-        // username.value = currentUser[0]?.name || ''
     }
 
-    // console.log('currentUser:',currentUser);
 
     let userdata = {
         name: currentName,

@@ -4,10 +4,8 @@ if (document.querySelector('.game')) {
     playername.innerHTML = gamername.name
     let seconds
     let isPause = false
-
-    // console.log(gamername, 'name');
     if (gamername.mode == "time") {
-        seconds = 10;
+        seconds = 60;
         let t;
         function time() {
             if (isPause === false) {
@@ -95,6 +93,11 @@ if (document.querySelector('.game')) {
         const number1 = getRandomIntInclusive(1, 10)
         const number2 = getRandomIntInclusive(1, 10)
         let randomValue = operators[Math.floor(operators.length * Math.random())];
+        if (randomValue === "/") {
+            if (number1 % number2 !== 0) {
+                return generateItems()
+            }
+        }
         const trueResult = sum(number1, number2, randomValue)
         return { randomValue, number1, number2, trueResult }
     }
@@ -110,6 +113,17 @@ if (document.querySelector('.game')) {
     let correct = 0
     let incorrect = 0
 
+    const mathGame = document.querySelector('.game-calculation')
+    function animation() {
+        mathGame.classList.remove("slide-in-right")
+        mathGame.classList.add("slide-in-right")
+        setTimeout(() => {
+            mathGame.classList.add("slide-in-right")
+            mathGame.classList.remove("slide-in-right")
+            setItems(items)
+        }, 300)
+    }
+    animation()
 
     let playerdata = {
         name: gamername.name,
@@ -119,11 +133,12 @@ if (document.querySelector('.game')) {
         incorrect: incorrect
     }
     console.log(gamername);
+
     document.addEventListener('keydown', (e) => {
         if (e.code === "Enter") {
             if (result.value == items.trueResult) {
                 console.log('правильно');
-
+                animation()
                 result.value = ''
                 items = generateItems()
                 setItems(items)
@@ -132,19 +147,19 @@ if (document.querySelector('.game')) {
                 correct = correct + 1
                 playerdata.correct = correct
                 score.innerText = win
-                // console.log(win, true);
             } else {
                 console.log('не правильно');
+                animation()
                 result.value = ''
                 items = generateItems()
                 if (win <= 0) {
+                    animation()
                     win = 0
                     setItems(items)
                     score.innerText = win
                     playerdata.score = win
                     incorrect = incorrect + 1
                     playerdata.incorrect = incorrect
-                    // console.log(win);
                     return
                 }
                 win = win - 1
@@ -153,11 +168,9 @@ if (document.querySelector('.game')) {
                 playerdata.incorrect = incorrect
                 setItems(items)
                 score.innerText = win
-                // console.log(win, false);
             }
         }
     })
-
 
 
     function setPlayerData() {
@@ -167,9 +180,6 @@ if (document.querySelector('.game')) {
 
             let data = JSON.parse(localStorage.getItem('score')) || []
             let currentUser = data.find(item => item.name === playerdata.name && item.mode === playerdata.mode)
-            console.log(currentUser);
-            console.log(playerdata);
-            console.log(gamername);
             if (currentUser) {
                 if (currentUser.score < playerdata.score) {
                     currentUser.score = playerdata.score
@@ -177,6 +187,7 @@ if (document.querySelector('.game')) {
                     currentUser.incorrect = playerdata.incorrect
                 }
             } else {
+
                 data.push(playerdata)
             }
             localStorage.setItem('score', JSON.stringify(data))
@@ -184,12 +195,10 @@ if (document.querySelector('.game')) {
             document.querySelector('.final-correct').innerHTML = playerdata.correct
             document.querySelector('.final-incorrect').innerHTML = playerdata.incorrect
             console.log(JSON.parse(localStorage.getItem('score')));
-
         } else {
             isPause = true
             document.querySelector('.modal-menu').style.opacity = 1
             document.querySelector('.modal-menu').style.visibility = 'visible'
-console.log('time');
             let data = JSON.parse(localStorage.getItem('score')) || []
             let currentUser = data.find(item => item.name === playerdata.name && item.mode === playerdata.mode)
             if (currentUser) {
@@ -199,12 +208,10 @@ console.log('time');
                     currentUser.incorrect = playerdata.incorrect
                 }
             } else {
-                console.log('new player');
                 data.push(playerdata)
             }
             localStorage.setItem('score', JSON.stringify(data))
         }
-
     }
 
     stop.addEventListener('click', setPlayerData)
