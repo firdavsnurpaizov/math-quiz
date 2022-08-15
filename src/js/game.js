@@ -16,6 +16,7 @@ if (document.querySelector('.game')) {
                     seconds--;
                 } else {
                     clearInterval(t);
+                    setPlayerData()
                     document.querySelector('.final-score').innerHTML = playerdata.score
                     document.querySelector('.final-correct').innerHTML = playerdata.correct
                     document.querySelector('.final-incorrect').innerHTML = playerdata.incorrect
