@@ -1,6 +1,7 @@
 if (document.querySelector('.leaderboard')) {
     let gamername = JSON.parse(localStorage.getItem('userdata'))
     const select = document.getElementById('mode');
+    const backLeader = document.querySelector('.leaderboard-btn');
     select.value = gamername.mode
     const leaderboard = document.querySelector('.leaderboard-block__leaders')
 
@@ -28,5 +29,9 @@ if (document.querySelector('.leaderboard')) {
         } else {
             setScores('practice')
         }
+    })
+
+    backLeader.addEventListener('click', () => {
+        location.assign('../index.html')
     })
 }

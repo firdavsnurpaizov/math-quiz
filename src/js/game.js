@@ -50,6 +50,7 @@ if (document.querySelector('.game')) {
     back.addEventListener('click', () => {
         location.assign('../index.html')
     })
+
     backend.addEventListener('click', () => {
         location.assign('../index.html')
     })

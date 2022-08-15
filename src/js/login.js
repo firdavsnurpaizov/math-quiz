@@ -10,6 +10,7 @@ if (document.querySelector('.login')) {
 
     if (currentUser) {
         username.value = currentUser.name || ''
+        
     }
 
     let userdata = {

@@ -3,6 +3,12 @@
   h3 {
     text-align: center;
   }
+  &-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: unset !important;
+  }
 
   &-mode {
     display: flex;
