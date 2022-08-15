@@ -10,7 +10,6 @@ if (document.querySelector('.login')) {
 
     if (currentUser) {
         username.value = currentUser.name || ''
-        
     }
 
     let userdata = {
@@ -34,6 +33,7 @@ if (document.querySelector('.login')) {
             userdata.mode = item.value
         })
     })
+
     const gamername = document.querySelector('.gamername')
 
     start.addEventListener('click', () => {
