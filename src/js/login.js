@@ -1,19 +1,16 @@
 if (document.querySelector('.login')) {
-
     let username = document.querySelector('.username')
     let warningText = document.querySelector('.warning-text')
     let start = document.querySelector('.go')
     const mode = document.querySelector('input[name="mode"]:checked').value
     const modes = document.querySelectorAll('input[name="mode"]')
-    let currentUser = JSON.parse(localStorage.getItem('username')) || []
-    let currentName
-    let currentMode
+    let currentUser = JSON.parse(localStorage.getItem('userdata'))
+    let currentName = currentUser?.name || ''
+    let currentMode = currentUser?.mode || ''
 
     if (currentUser) {
-        currentName = currentUser?.name || ''
-        currentMode = currentUser?.mode || ''
+        username.value = currentUser.name || ''
     }
-
 
     let userdata = {
         name: currentName,
@@ -27,6 +24,8 @@ if (document.querySelector('.login')) {
 
     username.oninput = (e) => {
         setUserData(e)
+        warningText.style.opacity = 0
+        warningText.style.visibility = 'hidden'
     }
 
     modes.forEach(item => {
@@ -41,14 +40,16 @@ if (document.querySelector('.login')) {
             warningText.style.opacity = 1
             warningText.style.visibility = 'visible'
         } else {
+            if (currentUser) {
+                username.value = currentUser.name || ''
+            }
+            // debugger
             warningText.style.opacity = 0
             warningText.style.visibility = 'hidden'
             localStorage.setItem('userdata', JSON.stringify(userdata))
             location.assign('../game.html')
             gamername.innerTEXT = 'firdavs'
+
         }
     })
-
-
-
 }

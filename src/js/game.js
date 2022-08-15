@@ -9,14 +9,13 @@ if (document.querySelector('.game')) {
         let t;
         function time() {
             if (isPause === false) {
-                if (seconds < 60) { // I want it to say 1:00, not 60
+                if (seconds < 60) {
                     document.getElementById("m").innerHTML = seconds;
                 }
-                if (seconds > 0) { // so it doesn't go to -1
+                if (seconds > 0) {
                     seconds--;
                 } else {
                     clearInterval(t);
-                    console.log('timer buttu');
                     document.querySelector('.final-score').innerHTML = playerdata.score
                     document.querySelector('.final-correct').innerHTML = playerdata.correct
                     document.querySelector('.final-incorrect').innerHTML = playerdata.incorrect
@@ -28,7 +27,7 @@ if (document.querySelector('.game')) {
         if (!t) {
             t = window.setInterval(function () {
                 time();
-            }, 1000); // every second
+            }, 1000);
         }
         document.getElementById("m").innerHTML = "1:00";
     } else {
@@ -107,6 +106,7 @@ if (document.querySelector('.game')) {
         num2.innerHTML = data.number2
         operator.innerHTML = data.randomValue
     }
+
     let items = generateItems()
     setItems(items)
     let win = 0
@@ -132,12 +132,10 @@ if (document.querySelector('.game')) {
         correct: correct,
         incorrect: incorrect
     }
-    console.log(gamername);
 
     document.addEventListener('keydown', (e) => {
-        if (e.code === "Enter") {
+        if (e.keyCode == '13' || e.code === "Enter") {
             if (result.value == items.trueResult) {
-                console.log('правильно');
                 animation()
                 result.value = ''
                 items = generateItems()
@@ -147,8 +145,15 @@ if (document.querySelector('.game')) {
                 correct = correct + 1
                 playerdata.correct = correct
                 score.innerText = win
+                document.querySelector('.notification').innerHTML = "+1"
+                document.querySelector('.notification').classList.add('animation')
+                document.querySelector('.notification').classList.add('green')
+                setTimeout(() => {
+                    document.querySelector('.notification').classList.remove('animation')
+                    document.querySelector('.notification').classList.remove('green')
+                    document.querySelector('.notification').innerHTML = ''
+                }, 700)
             } else {
-                console.log('не правильно');
                 animation()
                 result.value = ''
                 items = generateItems()
@@ -162,6 +167,16 @@ if (document.querySelector('.game')) {
                     playerdata.incorrect = incorrect
                     return
                 }
+
+                document.querySelector('.notification').innerHTML = "-1"
+                document.querySelector('.notification').classList.add('animation')
+                document.querySelector('.notification').classList.add('red')
+                setTimeout(() => {
+                    document.querySelector('.notification').classList.remove('animation')
+                    document.querySelector('.notification').classList.remove('red')
+                    document.querySelector('.notification').innerHTML = ''
+                }, 700)
+
                 win = win - 1
                 playerdata.score = win
                 incorrect = incorrect + 1
@@ -171,8 +186,6 @@ if (document.querySelector('.game')) {
             }
         }
     })
-
-
     function setPlayerData() {
         if (gamername.mode == 'practice') {
             document.querySelector('.modal-end').style.opacity = 1
@@ -187,7 +200,6 @@ if (document.querySelector('.game')) {
                     currentUser.incorrect = playerdata.incorrect
                 }
             } else {
-
                 data.push(playerdata)
             }
             localStorage.setItem('score', JSON.stringify(data))
@@ -213,57 +225,5 @@ if (document.querySelector('.game')) {
             localStorage.setItem('score', JSON.stringify(data))
         }
     }
-
     stop.addEventListener('click', setPlayerData)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

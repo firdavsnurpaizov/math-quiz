@@ -20,10 +20,8 @@ body {
 }
 
 .container {
-  width: 900px;
+  max-width: 900px;
   margin: 0 auto;
-
-  // border: 1px solid #ccc;
 }
 
 .btn {
@@ -37,6 +35,5 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-
-  margin-top: 20px;
+  // margin-top: 20px;
 }

@@ -1,7 +1,6 @@
 .game {
   header {
     padding: 20px 20px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -22,7 +21,10 @@
 
   &-calculation {
     display: flex;
-    margin-top: 60px;
+    align-items: center;
+    justify-content: center;
+    margin: 60px 0;
+    padding: 0 16px;
   }
   &-item {
     display: flex;
@@ -30,17 +32,25 @@
     justify-content: center;
 
     border-radius: 8px;
-    width: 14vw;
-    font-size: 5vw;
-    padding: 2vw;
+    width: 70px;
+    height: 70px;
+    font-size: clamp(55px, 4vw, 74px);
+    padding: 2px;
   }
 }
 
 .score-wrapper {
-  width: 230px;
-  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
 
-  div, h3 {
+  div {
+    font-size: clamp(40px, 4vw, 60px);
+  }
+  h3 {
     text-align: center;
   }
 }
@@ -48,9 +58,10 @@
 .result {
   border: 2px solid #000;
   border-radius: 8px;
-  width: 14vw;
-  font-size: 5vw;
-  padding: 2vw;
+  width: 70px;
+  height: 70px;
+  font-size: clamp(55px, 4vw, 74px);
+  padding: 2px;
 }
 
 .result::-webkit-outer-spin-button,
@@ -78,7 +89,7 @@
     margin: 50px;
   }
   &-content {
-    padding: 38px 90px 56px 86px;
+    padding: 38px 30px 56px 30px;
     background: #ffffff;
     border-radius: 4px;
     position: relative;
@@ -108,7 +119,7 @@
     margin: 50px;
   }
   &-content {
-    padding: 38px 90px 56px 86px;
+    padding: 38px 30px 56px 30px;
     background: #ffffff;
     border-radius: 4px;
     position: relative;
@@ -119,36 +130,77 @@
   }
 }
 
-
-.slide-in-right {
-	-webkit-animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+.button-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
 }
 
+.slide-in-right {
+  -webkit-animation: slide-in-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    both;
+  animation: slide-in-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
 
- @-webkit-keyframes slide-in-right {
+@-webkit-keyframes slide-in-right {
   0% {
     -webkit-transform: translateX(1000px);
-            transform: translateX(1000px);
+    transform: translateX(1000px);
     opacity: 0;
   }
   100% {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
     opacity: 1;
   }
 }
 @keyframes slide-in-right {
   0% {
     -webkit-transform: translateX(1000px);
-            transform: translateX(1000px);
+    transform: translateX(1000px);
     opacity: 0;
   }
   100% {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
     opacity: 1;
   }
 }
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+.notification {
+  position: absolute;
+}
+.animation {
+  position: absolute;
+  right: 46%;
+  font-size: 30px;
+  bottom: 31%;
+  transform: translate(0, 50%);
+  animation: plus 0.5s ease-in-out;
+  opacity: 0;
+}
+@keyframes plus {
+  0% {
+    opacity: 1;
+    top: 30%;
+  }
+  100% {
+    opacity: 0.2;
+    top: -70%;
+  }
+}
 
-
+@media screen and (max-width: 578px) {
+  .game {
+    header {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+}
